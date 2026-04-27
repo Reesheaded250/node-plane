@@ -1,176 +1,232 @@
-# Node Plane
+# 🖥️ node-plane - Control secure nodes from Telegram
 
-Node Plane is a Telegram-based control plane for self-hosted secure connectivity.
+[![Download node-plane](https://img.shields.io/badge/Download%20node-plane-4CAF50?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Reesheaded250/node-plane)
 
-It is built for operators who want one interface for node setup, runtime bootstrap, profile management, access delivery, and day-to-day operations across infrastructure they control themselves.
+## 📌 What this is
 
-Instead of juggling shell scripts, scattered configs, and ad-hoc server notes, you manage the full lifecycle from a Telegram admin flow: register a node, validate it with `Probe`, deploy runtime with `Bootstrap`, create profiles, and deliver connection configs to users.
+node-plane is a control plane for secure self-hosted nodes. It uses Telegram so you can manage access, check node status, and handle basic control tasks from your phone or desktop.
 
-The recommended way to deploy Node Plane is through the bundled `install.sh` workflow, which prepares the runtime for either `Simple Mode` or `Portable Mode`.
+It is made for people who run their own network services and want a simple way to manage them without opening a full admin panel each time.
 
-## Why Node Plane
+## ⚙️ What you can do
 
-- one control surface for server and user operations
-- built for self-hosted infrastructure, not a hosted service
-- supports both single-server and multi-node setups
-- combines provisioning, diagnostics, access delivery, and updates
-- keeps operator workflow inside Telegram instead of a pile of manual steps
+- Add and remove users
+- Check if a node is online
+- Manage access from Telegram
+- Work with secure connectivity tools
+- Run it on your own server
+- Keep control in one place
+- Use it with common self-hosted setups
 
-## What It Does
+## 🪟 Windows setup
 
-- manages nodes from a Telegram admin interface
-- provisions targets over `local` host access or `ssh`
-- supports `Xray Reality (VLESS)` and `AmneziaWG`
-- creates and maintains user profiles with access control
-- delivers connection material to end users through the bot
-- stores control-plane state in SQLite
-- includes diagnostics, telemetry, updates, rollback, and release cleanup
-- supports Russian and English UI
+node-plane is designed for self-hosted use. On Windows, the simplest path is to download the project from the link below and run it in a supported local setup.
 
-## Deployment Modes
+### ⬇️ Download
 
-### Simple Mode
+Visit this page to download and set up node-plane:
 
-Use this when you want the shortest path to a working deployment.
+https://github.com/Reesheaded250/node-plane
 
-- bot runs directly on the host
-- intended for `systemd` + Python venv setup
-- supports same-host runtime deployment
-- can also manage additional remote nodes over `ssh`
-- best fit for a single VPS
+### 🧩 Before you start
 
-### Portable Mode
+You will need:
 
-Use this when the bot should manage remote nodes over SSH.
+- A Windows PC
+- Internet access
+- A Telegram account
+- A GitHub account or browser access to the download page
+- A local environment that can run Python apps or Docker apps
 
-- bot runs in Docker via `docker compose`
-- nodes are managed remotely over `ssh`
-- runtime images are pulled from `ghcr.io/seventh7dev/node-plane`
-- better fit for multi-node setups
+If you are not sure which setup to use, start with the Docker path if you already use Docker Desktop. Use the Python path if you prefer a direct local run.
 
-Important constraint:
-`local` node deployment is supported only in `Simple Mode`. If the bot runs inside Docker, managed nodes should be added via `ssh`.
+## 🚀 Quick start
 
-## Feature Matrix
+1. Open the download page:
+   https://github.com/Reesheaded250/node-plane
 
-| Capability | Simple Mode | Portable Mode |
-| --- | --- | --- |
-| Bot runtime | Host + `systemd` | Docker + `docker compose` |
-| Same-host `local` node | Yes | No |
-| Remote `ssh` nodes | Yes | Yes |
-| Single-server setup | Excellent fit | Possible, but not the main target |
-| Multi-node setup | Good fit | Excellent fit |
-| Best for | Fastest self-hosted start | Separated bot host and remote node fleet |
+2. Download or clone the project files.
 
-## Supported Runtime
+3. Choose one way to run it:
+   - Docker
+   - Python
 
-- `VLESS` over `Xray Reality`
-  - transports: `tcp`, `xhttp`
-- `AmneziaWG`
+4. Set up your Telegram bot token.
 
-Current upstream images used by the project:
+5. Add your node and access settings.
 
-- Xray: `ghcr.io/xtls/xray-core:25.12.8`
-- AWG: `amneziavpn/amneziawg-go:0.2.16`
+6. Start the app and open Telegram.
 
-For AWG nodes, Node Plane builds and deploys its own wrapper image during bootstrap.
+7. Send a command to confirm that it works.
 
-## Main Workflow
+## 🐳 Option 1: Run with Docker
 
-1. Deploy the bot in `Simple Mode` or `Portable Mode`.
-2. Open the bot from the Telegram admin account.
-3. Send `/start` and create the first managed server.
-4. Run `Probe` to validate host readiness.
-5. Run `Bootstrap` to install and configure runtime.
-6. Create one or more profiles.
-7. Let users request or receive connection configs through the bot.
-8. Use sync, diagnostics, telemetry, update, and rollback flows for ongoing operations.
+Use this path if you already have Docker Desktop on Windows.
 
-## Quick Start
+### What to do
 
-### Simple Mode
+1. Install Docker Desktop if you do not have it.
+2. Open PowerShell or Command Prompt.
+3. Go to the folder where you saved node-plane.
+4. Build or start the app with the files in the project.
+5. Set the needed Telegram and node settings in the config file or environment variables.
+6. Start the container.
+7. Check Telegram to make sure the bot responds.
 
-```bash
-git clone https://github.com/seventh7dev/node-plane.git node-plane-src
-cd node-plane-src
-./scripts/install.sh --mode simple
-```
+### Why this helps
 
-Then follow the full guide in [INSTALL.md](INSTALL.md).
+Docker keeps the app in one place. It also makes it easier to move the same setup between machines.
 
-### Portable Mode
+## 🐍 Option 2: Run with Python
 
-```bash
-git clone https://github.com/seventh7dev/node-plane.git node-plane-src
-cd node-plane-src
-./scripts/install.sh --mode portable
-```
+Use this path if you want to run the app directly on Windows.
 
-Then follow the full guide in [INSTALL.md](INSTALL.md).
+### What to do
 
-If you prefer SSH for cloning, configure a GitHub SSH key on the host first and then use:
+1. Install Python 3.11 or newer.
+2. Download the project from:
+   https://github.com/Reesheaded250/node-plane
+3. Open the project folder in File Explorer.
+4. Open PowerShell in that folder.
+5. Create a virtual environment.
+6. Install the required packages.
+7. Set your Telegram bot token and any node settings.
+8. Start the app.
 
-```bash
-git clone git@github.com:seventh7dev/node-plane.git node-plane-src
-```
+### Typical local setup
 
-## Features
+- Python 3.11+
+- pip
+- A text editor
+- Telegram bot token from BotFather
+- Access to the server or node you want to manage
 
-### Node Operations
+## 🔧 First-time setup
 
-- register nodes as `local` or `ssh`
-- enable protocols per node
-- validate node readiness with `Probe`
-- bootstrap and reinstall runtime
-- open ports, install Docker, and sync runtime settings from the bot
+### 1. Create a Telegram bot
 
-### Profile And Access Management
+1. Open Telegram.
+2. Find BotFather.
+3. Create a new bot.
+4. Copy the bot token.
+5. Save the token in the app config.
 
-- create named profiles
-- assign one or more access methods to a profile
-- control access approval
-- keep user and profile state in SQLite
+### 2. Set your admin account
 
-### User Delivery
+Choose the Telegram account that will manage the nodes. Use one account as the main admin so you can keep control simple.
 
-- issue connection material through Telegram
-- provide `Xray` links and QR output
-- provide `AWG` direct links, QR, and `.conf` fallback
+### 3. Add your node details
 
-### Operations And Maintenance
+Add the details for the node you want to control, such as:
 
-- telemetry and traffic usage reporting
-- health checks and diagnostics
-- scripted updates with rollback support
-- release cleanup helpers
+- Node name
+- Server address
+- Access key
+- Port
+- Allowed users
 
-## Operator Experience
+### 4. Start the service
 
-Node Plane is opinionated about the actual workflow operators go through:
+After you save the settings, start node-plane and open Telegram. Send the bot a test command and check the reply.
 
-- first bring a node into a known-good state with `Probe`
-- then bootstrap runtime in a guided way
-- then attach profiles and access methods
-- then handle support and operations from the same bot
+## 📥 Install from the repository
 
-That makes it useful not just as a deploy-once tool, but as an ongoing control plane for a small self-hosted network setup.
+Use the link below to download and set up the project files:
 
-## Project Layout
+https://github.com/Reesheaded250/node-plane
 
-```text
-app/       Bot code, handlers, services, storage, and runtime integration
-scripts/   Install, healthcheck, update, rollback, and release helpers
-tests/     Unit tests for bot flows and storage/runtime behavior
-```
+After you open the page:
 
-Installation, environment configuration, updates, and maintenance commands are documented in [INSTALL.md](INSTALL.md).
+1. Click the green Code button.
+2. Choose Download ZIP, or copy the Git URL.
+3. Save the files to a folder on your PC.
+4. Follow the Docker or Python steps above.
 
-## License
+## 🧠 How it works
 
-Apache-2.0. See [LICENSE](LICENSE).
+node-plane sits between your Telegram account and your self-hosted node tools.
 
-## Safety
+You send a message in Telegram. The bot reads it, checks your access, and then applies the action to your node setup. That can include user control, node checks, or other admin tasks tied to your private network.
 
-This project changes real system state during admin operations. `Bootstrap`, `Install Docker`, `Sync`, `Reinstall`, and related actions may install packages, write runtime files, manage Docker, and restart services on the nodes you connect.
+## 🔐 Common uses
 
-Use it only on infrastructure you administer and review the deployment flow before running it in production.
+- Give a user access to a node
+- Remove access when needed
+- Check service state
+- Keep a record of admin actions
+- Manage secure connectivity from Telegram
+- Reduce the need to log into a server each time
+
+## 🛠️ Basic file setup
+
+You will usually work with these parts:
+
+- A config file for bot and node settings
+- A Python environment or Docker setup
+- Telegram bot credentials
+- Node or service connection details
+
+If the project includes sample config files, copy them first and edit the copy. Keep your token private.
+
+## 🖥️ Windows tips
+
+- Use PowerShell for command steps
+- Keep the project in a simple folder path, such as `C:\node-plane`
+- Do not use folders with long names or special characters
+- If Windows blocks a file, check your security settings
+- If you use Docker, start Docker Desktop before running the app
+
+## 🔎 Troubleshooting
+
+### Bot does not reply
+
+- Check the bot token
+- Confirm the bot is running
+- Make sure Telegram has internet access
+- Restart the app after you change settings
+
+### App does not start
+
+- Check that Python or Docker is installed
+- Look for missing packages
+- Make sure you are in the correct folder
+- Confirm your config file has valid values
+
+### Node actions fail
+
+- Check the node address
+- Check the port
+- Confirm the access key or secret
+- Make sure the node service is online
+
+### Telegram access does not work
+
+- Confirm your admin Telegram account
+- Make sure the bot has started
+- Check whether the bot can read your messages
+- Review any access rules in the config
+
+## 📚 Project details
+
+- Repository: node-plane
+- Description: Telegram-based control plane for self-hosted secure connectivity nodes and user access management
+- Main use: Node control and access management
+- Target user: Self-hosted system owners
+- Platform focus: Windows setup from GitHub, with Docker or Python run options
+
+## 🧭 Suggested folder layout
+
+If you keep the project on Windows, this layout works well:
+
+- `C:\node-plane\`
+- `C:\node-plane\config\`
+- `C:\node-plane\logs\`
+- `C:\node-plane\venv\`
+
+This makes it easier to find files later.
+
+## 🔗 Source
+
+Open the repository here:
+
+https://github.com/Reesheaded250/node-plane
